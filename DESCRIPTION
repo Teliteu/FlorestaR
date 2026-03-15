@@ -1,17 +1,20 @@
 Package: FlorestaR
-Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9000
+Title: Forest Dynamics Simulation and 3D Visualization
+Version: 0.1.0
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    person("Mateus", "Pinheiro")
+Description: An integrated tool for simulating forest growth, mortality, and recruitment 
+    using Artificial Neural Networks. It features 3D forest rendering, a management 
+    interface for logging scenarios, and time-lapse animations of forest evolution 
+    to support sustainable forest management decisions.
+License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 Imports: 
     caret,
     dplyr,
+    DT,
     ggplot2,
     magick,
     nnet,
@@ -20,6 +23,7 @@ Imports:
     readr,
     rgl,
     sf,
+    shiny,
     terra,
     tidyr,
     tree3d
