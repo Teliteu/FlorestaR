@@ -1,6 +1,7 @@
 # FlorestaR 🌳
+
 Authors
-Mateus - Master's Student at University of Brasília (UnB)
+Mateus Pinheiro - Master's Student at University of Brasília (UnB)
 
 **FlorestaR** is an R package for 3D simulation and visualization of forest dynamics. It allows users to simulate growth, mortality, and recruitment based on forest inventory data and neural network models.
 
