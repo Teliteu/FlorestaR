@@ -105,13 +105,9 @@ executar_projeto_florestal <- function(arq_csv, arq_rds, pasta_saida = "Resultad
   }
 
   # 5. 3D Animation Rendering
-  if(gerar_animacao) {
-    if(exists("gerar_animacao")) {
-      message(">>> Generating 3D Animation...")
-      gerar_animacao(res_longo, df_original = df_pre_corte, output_dir = file.path(pasta_saida, "Animacao"))
-    } else {
-      message(">>> WARNING: Function 'gerar_animacao' not found. Make sure to load visualizacao.R")
-    }
+  if(salvar_animacao) {
+    message(">>> Generating 3D Animation...")
+    gerar_animacao(res_longo, output_dir = file.path(pasta_saida, "Animacao"))
   }
 
   return(res_longo)
