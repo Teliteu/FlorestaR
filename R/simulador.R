@@ -1,5 +1,5 @@
 # --------------------------------------------------
-# simulador.R - V55 (Direct DBH Prediction & Realistic Recruitment)
+# simulador.R
 # --------------------------------------------------
 rodar_simulacao <- function(df, modelo_rds, tb_prob, anos = 17, tx_mort = 1.92, tx_recr = 2.55, dap_recrutas = 20) {
 
@@ -7,7 +7,7 @@ rodar_simulacao <- function(df, modelo_rds, tb_prob, anos = 17, tx_mort = 1.92, 
   library(caret)
   library(nnet)
 
-  message("\n>>> [INIT] SIMULATOR V55 (DIRECT DBH)...")
+  message("\n>>> [INIT] SIMULATOR (DIRECT DBH)...")
 
   # Load normalization scales and the trained neural network model
   sc <- modelo_rds$scales
