@@ -1,4 +1,6 @@
 # FlorestaR 🌳
+Authors
+Mateus - Master's Student at University of Brasília (UnB)
 
 **FlorestaR** is an R package for 3D simulation and visualization of forest dynamics. It allows users to simulate growth, mortality, and recruitment based on forest inventory data and neural network models.
 
@@ -16,5 +18,3 @@ You can install the development version of FlorestaR from GitHub with:
 if(!require(devtools)) install.packages("devtools")
 devtools::install_github("Teliteu/FlorestaR")
 
-Authors
-Mateus - Master's Student at University of Brasília (UnB)
