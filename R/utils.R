@@ -31,8 +31,6 @@ transformar_para_grid <- function(df_resultado) {
   step_x <- width
   step_y <- height
 
-  message(sprintf(">>> Assembling Visual Grid: Plots of %.1fm x %.1fm", width, height))
-
   res <- df_resultado %>%
     dplyr::group_by(Parcela) %>%
     dplyr::mutate(
