@@ -8,7 +8,7 @@
 #' @param gerar_animacao Logical. Whether to generate the 3D GIF.
 #' @export
 executar_projeto_florestal <- function(arq_csv, arq_rds, pasta_saida = "Resultados_Projeto",
-                                       area_total = 18, anos_simulacao = 18, gerar_animacao = FALSE) {
+                                       area_total = 18, anos_simulacao = 18, salvar_animacao = FALSE) {
 
   require(dplyr)
   require(readr)
