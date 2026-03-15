@@ -93,10 +93,10 @@ executar_projeto_florestal <- function(arq_csv, arq_rds, pasta_saida = "Resultad
 
     # 2. Apply requested formatting and cleanup
     res_excel <- res_excel %>%
-      # Rename to simple X and Y
-      rename(X = x_original, Y = y_original) %>%
+      # Rename to simple X and Y (NOTA: As iniciais têm de ser maiúsculas aqui do lado direito)
+      rename(X = X_Original, Y = Y_Original) %>%
       # Remove the event or logging year column
-      select(-any_of(c("ano_evento", "ano_corte")))
+      select(-any_of(c("Ano_Evento", "ano_corte")))
 
     # 3. Save the single file using empty strings instead of NA
     write.csv2(res_excel, file.path(pasta_saida, "FINAL.csv"), row.names = FALSE, na = "")
