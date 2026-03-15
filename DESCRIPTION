@@ -2,7 +2,9 @@ Package: FlorestaR
 Title: Forest Dynamics Simulation and 3D Visualization
 Version: 0.1.0
 Authors@R: 
-    person("Mateus", "Pinheiro")
+    person("Mateus", "Pinheiro", 
+           email = "mateus.opinheiro@hotmail.com", 
+           role = c("aut", "cre"))
 Description: An integrated tool for simulating forest growth, mortality, and recruitment 
     using Artificial Neural Networks. It features 3D forest rendering, a management 
     interface for logging scenarios, and time-lapse animations of forest evolution 
