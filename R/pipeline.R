@@ -84,24 +84,24 @@ executar_projeto_florestal <- function(arq_csv, arq_rds, pasta_saida = "Resultad
   # Merge results
   res_longo <- dplyr::bind_rows(df_mortas_exploracao, res_sim)
 
-  # 4. Data Export
+  # 4. Data Export (FINAL REPORT ONLY)
   message(">>> Saving results...")
-  write.csv2(res_longo, file.path(pasta_saida, "Simulacao_Bruta.csv"), row.names=F)
 
   if(exists("gerar_tabela_final_larga")) {
+    # 1. Generate the wide-format table (DBH values in columns)
     res_excel <- gerar_tabela_final_larga(res_longo)
-    write.csv2(res_excel, file.path(pasta_saida, "RELATORIO_FINAL.csv"), row.names=F)
-    message(paste(">>> SUCCESS! Report saved at:", file.path(pasta_saida, "RELATORIO_FINAL.csv")))
-  }
 
-  # 5. 3D Animation Rendering
-  if(gerar_animacao) {
-    if(exists("gerar_animacao")) {
-      message(">>> Generating 3D Animation...")
-      gerar_animacao(res_longo, df_original = df_pre_corte, output_dir = file.path(pasta_saida, "Animacao"))
-    } else {
-      message(">>> WARNING: Function 'gerar_animacao' not found. Make sure to load visualizacao.R")
-    }
+    # 2. Apply requested formatting and cleanup
+    res_excel <- res_excel %>%
+      # Rename to simple X and Y
+      rename(X = x_original, Y = y_original) %>%
+      # Remove the event or logging year column
+      select(-any_of(c("ano_evento", "ano_corte")))
+
+    # 3. Save the single file using empty strings instead of NA
+    write.csv2(res_excel, file.path(pasta_saida, "FINAL.csv"), row.names = FALSE, na = "")
+
+    message(paste(">>> SUCCESS! Report saved at:", file.path(pasta_saida, "FINAL.csv")))
   }
 
   return(res_longo)
