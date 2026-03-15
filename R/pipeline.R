@@ -88,20 +88,30 @@ executar_projeto_florestal <- function(arq_csv, arq_rds, pasta_saida = "Resultad
   message(">>> Saving results...")
 
   if(exists("gerar_tabela_final_larga")) {
-    # 1. Generate the wide-format table (DBH values in columns)
+    # Generate the wide-format table (DBH values in columns)
     res_excel <- gerar_tabela_final_larga(res_longo)
 
-    # 2. Apply requested formatting and cleanup
+    # Apply requested formatting and cleanup
     res_excel <- res_excel %>%
-      # Força o uso do rename do dplyr
+      # Force dplyr rename to avoid namespace masking
       dplyr::rename(X = X_Original, Y = Y_Original) %>%
-      # Força o uso do select do dplyr
+      # Force dplyr select to remove event columns
       dplyr::select(-any_of(c("Ano_Evento", "ano_corte")))
 
-    # 3. Save the single file using empty strings instead of NA
+    # Save the single file using empty strings instead of NA
     write.csv2(res_excel, file.path(pasta_saida, "FINAL.csv"), row.names = FALSE, na = "")
 
     message(paste(">>> SUCCESS! Report saved at:", file.path(pasta_saida, "FINAL.csv")))
+  }
+
+  # 5. 3D Animation Rendering
+  if(gerar_animacao) {
+    if(exists("gerar_animacao")) {
+      message(">>> Generating 3D Animation...")
+      gerar_animacao(res_longo, df_original = df_pre_corte, output_dir = file.path(pasta_saida, "Animacao"))
+    } else {
+      message(">>> WARNING: Function 'gerar_animacao' not found. Make sure to load visualizacao.R")
+    }
   }
 
   return(res_longo)
