@@ -38,16 +38,21 @@ To run the simulation, your working directory must contain a trained model (`mod
 **Important:** Ensure that both your `.csv` inventory and `model.rds` are located in the same folder before running the script.
 
 ```r
+# 1. Install the package from GitHub (only needed once)
+# install.packages("devtools")
+devtools::install_github("Teliteu/FlorestaR")
+
+# 2. Load the library
 library(FlorestaR)
 
-# 1. Set the working directory to the folder containing your files
-setwd("path_folder")
+# 3. Set your working directory
+setwd("path")
 
-# 2. Run the full forest project simulation
+# 4. Run the full forest project simulation
 results <- executar_projeto_florestal(
   arq_csv = ".csv",                 # Forest inventory data
   arq_rds = "model.rds",            # Trained ANN model
-  pasta_saida = "",                 # Output folder name (will be created)
+  pasta_saida = "",                 # Output folder name
   area_total = 18,                  # Total area in hectares
   anos_simulacao = 18,              # Number of years to simulate
   salvar_animacao = TRUE            # Generate the 3D time-lapse GIF
