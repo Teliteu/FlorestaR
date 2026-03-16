@@ -35,7 +35,7 @@ To run the simulation, your working directory must contain a trained model (`mod
 
 ## Quick Start Example
 
-**Important:** Ensure that both `.csv` inventory and `model.rds` are located in the same folder before running the script.
+**Important:** Ensure that both your `.csv` inventory and `model.rds` are located in the same folder before running the script.
 
 ```r
 library(FlorestaR)
@@ -50,5 +50,13 @@ results <- executar_projeto_florestal(
   pasta_saida = "",                 # Output folder name (will be created)
   area_total = 18,                  # Total area in hectares
   anos_simulacao = 18,              # Number of years to simulate
-  gerar_animacao = TRUE             # Generate the 3D time-lapse GIF
+  salvar_animacao = TRUE            # Generate the 3D time-lapse GIF
 )
+
+```
+## Outputs Generated
+
+After the simulation finishes, the specified output folder will contain:
+
+* **`FINAL.csv`**: A clean, wide-format spreadsheet detailing the complete history of the forest. It contains one row per tree, including static attributes (Species, Plot, X, Y) and dynamic DBH values across all simulated years. Cells are left blank for years before a tree was recruited or after it died/was harvested.
+* **`Animacao/`** *(if `salvar_animacao = TRUE`)*: A subfolder containing the final 3D time-lapse in (`Animacao`).
