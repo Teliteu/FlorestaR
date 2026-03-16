@@ -21,7 +21,7 @@ devtools::install_github("Teliteu/FlorestaR")
 ```
 ## Data Requirements
 
-To run the simulation, your working directory must contain a trained model (`model.rds`) and an inventory file (`TEST.csv`) with the following mandatory columns:
+To run the simulation, your working directory must contain a trained model (`model.rds`) and an inventory file (`.csv`) with the following mandatory columns:
 
 | Column | Description |
 | :--- | :--- |
